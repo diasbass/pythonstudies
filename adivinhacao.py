@@ -6,11 +6,13 @@ print('*************************')
 
 numero_secreto = round(random.randrange(1, 101))
 total_de_tentativas = 0
-rodada = 1
+pontos = 1000
 
 print("Qual o nível de dificuldade?")
 print("(1) Fácil (2) Médio (3) Difícil")
 nivel = int(input("Defina um nível: "))
+
+print(numero_secreto)
 
 if(nivel == 1):
     total_de_tentativas = 20
@@ -34,12 +36,14 @@ for rodada in range(1, total_de_tentativas + 1):
     chute_menor = chute < numero_secreto
 
     if (acertou):
-        print('Show! Você acertou o número secreto!')
+        print('Show! Você acertou o número secreto e fez {} pontos!'.format(pontos))
         break
     else:
         if(chute_maior):
             print('Você errou! O seu número é maior que o número secreto.')
         elif(chute_menor):
             print('Você errou! O seu número é menor que o número secreto.')
+        pontos_perdidos = abs(numero_secreto - chute)
+        pontos = pontos - pontos_perdidos
 
 print("Fim do jogo!")
